@@ -1,0 +1,16 @@
+server:
+  port: 7001                                            # Eureka服务端口
+
+eureka: 
+  instance: 
+    lease-renewal-interval-in-seconds: 30               # 设置心跳的间隔时间（30秒）
+    lease-expiration-duration-in-seconds: 90            # 设置心跳超过了的时间 
+    hostname: eureka-7001.com
+  server:
+    eviction-interval-timer-in-ms:  10000               # 设置无效服务的清理时间（默认是60秒）
+    enable-self-preservation: true                      # 关闭受保护模式
+  client:
+    service-url:
+      defaultZone: http://eureka-7001.com:7001/eureka   # 定义你服务的注册路径
+    register-with-eureka: false                         # 当前的服务不注册到eureka之中
+    fetch-registry: false                               # 该服务不通过eureka抓取任何注册信息

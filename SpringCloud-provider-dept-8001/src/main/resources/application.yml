@@ -1,0 +1,42 @@
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  # 定义mybatis核心配置文件的路径
+  type-aliases-package: cn.mldn.hh.SpringCloud.vo       # 定义别名出现的开发包
+  mapper-locations:
+  - classpath:mybatis/mapping/**/*.xml            # 所有的映射文件路径
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: hh
+#   password: 1125
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-7001.com:7001/eureka   # 定义你服务的注册路径
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true   # 底部显示IP地址
+info:
+  app.name: mldn-springcloud-dept
+  company.name: www.hh1125.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+spring:
+  application:
+    name: springcloud-provider-dept 
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 配置数据源类型
+    url: jdbc:mysql://localhost:3306/dept8001     # 数据库的连接地址
+    driver-class-name: org.gjt.mm.mysql.Driver    # 驱动程序
+    username: root                                # 用户名
+    password: mysqladmin                          # 密码
+    dbcp2:                                        # 数据库连接池配置
+      min-idle: 1                                 # 最小维持连接数
+      max-idle: 1                                 # 最大维持连接数
+      max-total: 1                                # 最大的可用连接数
+      max-wait-millis: 200                        # 最大等待时间
+      initial-size: 1                             # 初始化连接数
+server: 
+  port: 8001                                      # 定义服务端口
+
